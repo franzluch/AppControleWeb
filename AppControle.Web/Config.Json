@@ -1,8 +1,0 @@
-﻿{
-  "ConexaoSqlite": {
-    "SqliteConnectionString": "Data Source=AppControle.db"
-  }
-
-}
-
-
