@@ -1,0 +1,21 @@
+﻿<h1>Listagem de Categorias</h1>
+@Html.ActionLink("Criar Nova Categoria", "Novo", "Categoria", null, new { @class = "btn btn-primary" })
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.Categorias)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.Nome</td>
+            </tr>
+        }
+    </tbody>
+</table>

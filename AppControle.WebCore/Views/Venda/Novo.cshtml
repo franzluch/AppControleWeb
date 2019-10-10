@@ -1,0 +1,56 @@
+﻿@model AppControle.Domain.Entities.Venda
+
+@{
+    ViewData["Title"] = "Novo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Novo</h1>
+
+<h4>Venda</h4>
+<hr />
+<div class="row">
+
+    <div class="col-md-4">
+        @{
+            if (ViewBag.Errors != null)
+            {
+                @foreach (var item in ViewBag.Errors)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @item
+                    </div>
+
+                }
+            }
+        }
+
+        <form asp-action="Novo">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProdutoId" class="control-label">Produto</label>
+                <select asp-for="ProdutoId" class="form-control" asp-items="ViewBag.Produtos"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantidade" class="control-label"></label>
+                <input asp-for="Quantidade" class="form-control" />
+                <span asp-validation-for="Quantidade" class="text-danger"></span>
+            </div>
+            <!--
+        <div class="form-group">
+            <label asp-for="DataVenda" class="control-label"></label>
+            <input asp-for="DataVenda" class="form-control" />
+            <span asp-validation-for="DataVenda" class="text-danger"></span>
+        </div>
+            -->
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

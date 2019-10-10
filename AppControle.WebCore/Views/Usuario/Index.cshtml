@@ -1,0 +1,23 @@
+﻿<h1>Listagem de Usuários</h1>
+@Html.ActionLink("Novo Usuário", "Novo", "Usuario", null, new { @class = "btn btn-primary" })
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Cpf</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.Usuarios)
+        {
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>@item.Email</td>
+            <td>@item.Cpf</td>
+        </tr>
+        }
+    </tbody>
+</table>

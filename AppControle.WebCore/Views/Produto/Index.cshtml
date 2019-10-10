@@ -1,0 +1,44 @@
+﻿<h1>Listagem de Produtos</h1>
+@Html.ActionLink("Criar Novo Produto", "Novo", "Produto", null, new { @class = "btn btn-primary" })
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Quantidade Estoque</th>
+            <th scope="col">Editar Estoque</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.Produtos)
+        {
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>@item.Descricao</td>
+            <td>@item?.Categoria?.Nome</td>
+            <td>@{
+                decimal qtd = 0;
+                if (item.Estoque.Count > 0)
+                {
+                    foreach (var est in item.Estoque)
+                    {
+                        qtd = est.Quantidade;
+                    }
+                    
+                }
+                else
+                {
+                    qtd = 0;
+                }
+            }
+            @qtd
+            </td>
+            
+            <td>@Html.ActionLink("Editar", "Editar", "Produto", new { id = item.Id }, null)</td>
+        </tr>
+        }
+    </tbody>
+</table>
